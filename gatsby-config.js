@@ -1,14 +1,14 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Zensemaker Blog`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `J. Antonio Avalos`,
+      summary: `UX Architect writing about productivity, strategy and communication skills for creatives`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    description: `Short-form stories about productivity, strategy and communication skills. New posts every other day.`,
+    siteUrl: `https://zensemaker.gatsbyjs.io/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `jantonioavalos`,
     },
   },
   plugins: [
@@ -112,19 +112,45 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Zensemaker Blog`,
+        short_name: `Zensemaker`,
         start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#663399`,
+        background_color: `#FDFBfA`,
+        theme_color: `#E16259`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/Zensemaker.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-gatsby-cloud`,
-    // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
+    {
+    resolve: `gatsby-source-datocms`,
+    options: {
+      // You can find your read-only API token under the Settings > API tokens
+      // section of your administrative area. Make sure to grant both CDA and CMA permissions.
+      apiToken: `945916afc25f10a2ab7d0eb53060f4`,
+
+      // The project environment to read from. Defaults to the primary environment:
+      environment: `main`,
+
+      // If you are working on development/staging environment, you might want to
+      // preview the latest version of records instead of the published one:
+      previewMode: false,
+
+      // Disable automatic reloading of content when some change occurs on DatoCMS:
+      disableLiveReload: false,
+
+      // Custom API base URL (most don't need this)
+      // apiUrl: 'https://site-api.datocms.com',
+
+      // Setup locale fallbacks
+      // In this example, if some field value is missing in Italian, fall back to English
+      localeFallbacks: {
+        it: ['en'],
+      },
+    },
+  },
   ],
 }
