@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Zensemaker Blog`,
     author: {
-      name: `J. Antonio Avalos`,
+      name: `J. Antonio Avalos.`,
       summary: `UX Architect writing about productivity, strategy and communication skills for creatives`,
     },
     description: `Short-form stories about productivity, strategy and communication skills. New posts every other day.`,
@@ -115,8 +115,8 @@ module.exports = {
         name: `Zensemaker Blog`,
         short_name: `Zensemaker`,
         start_url: `/`,
-        background_color: `#FDFBfA`,
-        theme_color: `#E16259`,
+        background_color: `#F4F9FF`,
+        theme_color: `#4576c5`,
         display: `minimal-ui`,
         icon: `src/images/Zensemaker.png`, // This path is relative to the root of the site.
       },
