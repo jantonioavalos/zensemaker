@@ -6,13 +6,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // Define a template for blog post
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const cmsBlogPost = path.resolve(`./src/templates/cms-blog-post.js`)
 
   // Get all markdown blog posts sorted by date
   const result = await graphql(
     `
       {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: ASC }
+        localPosts: allMarkdownRemark(
+          sort: {fields: [frontmatter___date], order: ASC}
+          filter: {frontmatter: {date: {ne: null}}}
           limit: 1000
         ) {
           nodes {
@@ -20,6 +22,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             fields {
               slug
             }
+          }
+        }
+        datoCmsPages: allDatoCmsStoryPage{
+          nodes {
+            id
+            slug            
           }
         }
       }
@@ -34,16 +42,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return
   }
 
-  const posts = result.data.allMarkdownRemark.nodes
+  const localPosts = result.data.localPosts.nodes
+  const datoCmsPages = result.data.datoCmsPages.nodes
+
 
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
   // `context` is available in the template as a prop and as a variable in GraphQL
 
-  if (posts.length > 0) {
-    posts.forEach((post, index) => {
-      const previousPostId = index === 0 ? null : posts[index - 1].id
-      const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
+  if (localPosts.length > 0) {
+    localPosts.forEach((post, index) => {
+      const previousPostId = index === 0 ? null : localPosts[index - 1].id
+      const nextPostId = index === localPosts.length - 1 ? null : localPosts[index + 1].id
 
       createPage({
         path: post.fields.slug,
@@ -56,6 +66,26 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       })
     })
   }
+
+  // Create blog posts -called Stories– pages from DatoCMS
+
+  if (datoCmsPages.length > 0) {
+    datoCmsPages.forEach((post, index) => {
+      const previousPostId = index === 0 ? null : datoCmsPages[index - 1].id
+      const nextPostId = index === datoCmsPages.length - 1 ? null : datoCmsPages[index + 1].id
+
+      createPage({
+        path: post.slug,
+        component: cmsBlogPost,
+        context: {
+          id: post.id,
+          previousPostId,
+          nextPostId,
+        },
+      })
+    })
+  }
+
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

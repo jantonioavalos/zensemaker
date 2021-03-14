@@ -8,6 +8,7 @@ import SEO from "../components/seo"
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
+  const stories = data.allDatoCmsStoryPage.nodes
 
   if (posts.length === 0) {
     return (
@@ -59,6 +60,38 @@ const BlogIndex = ({ data, location }) => {
           )
         })}
       </ol>
+      <ol style={{ listStyle: `none` }}>
+        {stories.map(story => {
+          const title = story.title || story.slug
+
+          return (
+            <li key={story.slug}>
+              <article
+                className="post-list-item"
+                itemScope
+                itemType="http://schema.org/Article"
+              >
+                <header>
+                  <h2>
+                    <Link to={story.slug} itemProp="url">
+                      <span itemProp="headline">{title}</span>
+                    </Link>
+                  </h2>
+                  <small>{story.date}</small>
+                </header>
+                <section>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: story.bodyTextNode.childMarkdownRemark.excerpt,
+                    }}
+                    itemProp="description"
+                  />
+                </section>
+              </article>
+            </li>
+          )
+        })}
+      </ol>
     </Layout>
   )
 }
@@ -72,7 +105,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      sort: {fields: [frontmatter___date], order: DESC}
+      filter: {frontmatter: {date: {ne: null}}}
+    ) {
       nodes {
         excerpt
         fields {
@@ -82,6 +118,19 @@ export const pageQuery = graphql`
           date(formatString: "MMMM DD, YYYY")
           title
           description
+        }
+      }
+    }
+    allDatoCmsStoryPage {
+      nodes {
+        id
+        slug
+        date(formatString: "MMMM DD, YYYY")
+        title
+        bodyTextNode {
+          childMarkdownRemark {
+            excerpt
+          }
         }
       }
     }
