@@ -74,32 +74,33 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map(node => {
-                return Object.assign({}, node.frontmatter, {
-                  description: node.excerpt,
-                  date: node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + node.fields.slug,
-                  custom_elements: [{ "content:encoded": node.html }],
+            serialize: ({ query: { site, allDatoCmsStoryPage } }) => {
+              return allDatoCmsStoryPage.nodes.map(node => {
+                let datoCmsFrontmatter = {
+                  "title": node.title, 
+                  "date": node.date
+                }
+                return Object.assign({}, datoCmsFrontmatter, {
+                  description: node.bodyTextNode.childMarkdownRemark.excerpt,
+                  date: node.date,
+                  url: site.siteMetadata.siteUrl + node.slug,
+                  guid: site.siteMetadata.siteUrl + node.slug,
+                  custom_elements: [{ "content:encoded": node.bodyTextNode.childMarkdownRemark.html }],
                 })
               })
             },
             query: `
               {
-                allMarkdownRemark(
-                  sort: { order: DESC, fields: [frontmatter___date] },
-                  filter: {frontmatter: {date: {ne: null}}}
-                ) {
+                allDatoCmsStoryPage {
                   nodes {
-                    excerpt
-                    html
-                    fields {
-                      slug
-                    }
-                    frontmatter {
-                      title
-                      date
+                    slug
+                    date(formatString: "MMMM DD, YYYY")
+                    title
+                    bodyTextNode {
+                      childMarkdownRemark {
+                        excerpt
+                        html
+                      }
                     }
                   }
                 }
