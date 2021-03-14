@@ -91,15 +91,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
+  if (node.internal.type !== null && typeof node.internal.type !== 'undefined' && node.internal.type === `MarkdownRemark` ) {
+    //DatoCMS posts don't have internal.type, they would retrieve null, then ERROR
 
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    })
-  }
+    try{
+      const value = createFilePath({ node, getNode })
+
+      createNodeField({
+        name: `slug`,
+        node,
+        value,
+      })
+    }
+    catch {
+      console.error("WARNING: Posts from DatoCMS don't have internal.type");
+    }
+  } 
 }
 
 exports.createSchemaCustomization = ({ actions }) => {
