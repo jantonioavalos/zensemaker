@@ -13,8 +13,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     `
       {
         localPosts: allMarkdownRemark(
-          sort: {fields: [frontmatter___date], order: ASC}
-          filter: {frontmatter: {date: {ne: null}}}
+          sort: {fields: [frontmatter___date], order: ASC},
+          filter: {frontmatter: {date: {ne: null}}},
           limit: 1000
         ) {
           nodes {
