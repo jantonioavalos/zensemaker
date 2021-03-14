@@ -91,10 +91,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
-  if (node.internal.type !== null && typeof node.internal.type !== 'undefined' && node.internal.type === `MarkdownRemark` ) {
-    //DatoCMS posts don't have internal.type, they would retrieve null, then ERROR
-
-    try{
+  //The following functions will retrieve file names and then asign value as slug
+  if (node.internal.type === `MarkdownRemark` && !node.parent.includes('DatoCmsTextNode')) {
+    //DatoCMS posts are not local files, so this excludes nodes with DatoCMS parents 
+  
       const value = createFilePath({ node, getNode })
 
       createNodeField({
@@ -102,10 +102,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         node,
         value,
       })
-    }
-    catch {
-      console.error("WARNING: Posts from DatoCMS don't have internal.type");
-    }
   } 
 }
 
