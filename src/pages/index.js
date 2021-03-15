@@ -121,7 +121,9 @@ export const pageQuery = graphql`
         }
       }
     }
-    allDatoCmsStoryPage {
+    allDatoCmsStoryPage (
+      sort: {fields: date, order: DESC}
+    ) {
       nodes {
         id
         slug
