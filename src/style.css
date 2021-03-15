@@ -296,6 +296,9 @@ a:focus {
 
 .bio {
   display: flex;
+}
+
+.bio-header {
   margin-bottom: var(--spacing-16);
 }
 
@@ -338,4 +341,10 @@ a:focus {
   ol {
     list-style-position: inside;
   }
+}
+
+/* Helper classes */
+
+.blog-post-bio {
+  margin-bottom: 0;
 }

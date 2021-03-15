@@ -6,61 +6,62 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const CmsBlogPostTemplate = ({ data, location }) => {
-  const post = data.datoCmsStoryPage
+  const story = data.datoCmsStoryPage
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
 
   return (
     <Layout location={location} title={siteTitle}>
-      {/* <SEO
-        title={post.title}
-        // description={post.frontmatter.description || post.excerpt}
-        description={post.bodyTextNode.childMarkdownRemark.excerpt}
-      /> */}
+      <SEO
+        title={story.title}
+        description={story.bodyTextNode.childMarkdownRemark.excerpt}
+      />
       <article
         className="blog-post"
         itemScope
         itemType="http://schema.org/Article"
       >
         <header>
-          <h1 itemProp="headline">{post.title}</h1>
-          <p>{post.date}</p>
+          <h1 itemProp="headline">{story.title}</h1>
+          <p>{story.date + ` • ` + story.bodyTextNode.childMarkdownRemark.timeToRead + ` min read`}</p>
         </header>
         <section
-          dangerouslySetInnerHTML={{ __html: post.bodyTextNode.childMarkdownRemark.html }}
+          dangerouslySetInnerHTML={{ __html: story.bodyTextNode.childMarkdownRemark.html }}
           itemProp="articleBody"
         />
         <hr />
         <footer>
-          <Bio />
+          <Bio className="blog-post-bio"/>
         </footer>
+        <hr />
       </article>
-      {/* <nav className="blog-post-nav">
+      <nav className="blog-post-nav">
+        <h4>Continue reading</h4>
         <ul
           style={{
             display: `flex`,
             flexWrap: `wrap`,
-            justifyContent: `space-between`,
+            // justifyContent: `space-between`,
             listStyle: `none`,
             padding: 0,
           }}
         >
           <li>
             {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
+              <Link to={"/" + previous.slug} rel="prev">
+                ← {previous.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
+              <Link to={"/" + next.slug} rel="next">
+                {next.title} →
               </Link>
             )}
           </li>
         </ul>
-      </nav> */}
+      </nav>
     </Layout>
   )
 }
@@ -87,34 +88,17 @@ export const pageQuery = graphql`
         childMarkdownRemark {
           excerpt(pruneLength: 160)
           html
+          timeToRead
         }
       }
     }
-    markdownRemark(id: { eq: $id }) {
-      id
-      excerpt(pruneLength: 160)
-      html
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        description
-      }
+    previous: datoCmsStoryPage(id: { eq: $previousPostId }) {
+      slug
+      title
     }
-    previous: markdownRemark(id: { eq: $previousPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-      }
-    }
-    next: markdownRemark(id: { eq: $nextPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-      }
+    next: datoCmsStoryPage(id: { eq: $nextPostId }) {
+      slug
+      title
     }
   }
 `
