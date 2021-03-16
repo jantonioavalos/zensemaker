@@ -14,7 +14,7 @@ const BlogIndex = ({ data, location }) => {
     return (
       <Layout location={location} title={siteTitle}>
         <SEO title="All posts" />
-        <Bio />
+        <Bio className="bio-header"/>
         <p>
           No blog posts found. Add markdown posts to "content/blog" (or the
           directory you specified for the "gatsby-source-filesystem" plugin in
@@ -45,7 +45,7 @@ const BlogIndex = ({ data, location }) => {
                       <span itemProp="headline">{title}</span>
                     </Link>
                   </h2>
-                  <small>{post.frontmatter.date}</small>
+                  <small>{post.frontmatter.date + ` • ` + post.timeToRead + ` min read`}</small>
                 </header>
                 <section>
                   <p
@@ -77,7 +77,7 @@ const BlogIndex = ({ data, location }) => {
                       <span itemProp="headline">{title}</span>
                     </Link>
                   </h2>
-                  <small>{story.date}</small>
+                  <small>{story.date + ` • ` + story.bodyTextNode.childMarkdownRemark.timeToRead + ` min read`}</small>
                 </header>
                 <section>
                   <p
@@ -111,6 +111,7 @@ export const pageQuery = graphql`
     ) {
       nodes {
         excerpt
+        timeToRead
         fields {
           slug
         }
@@ -121,7 +122,9 @@ export const pageQuery = graphql`
         }
       }
     }
-    allDatoCmsStoryPage {
+    allDatoCmsStoryPage (
+      sort: {fields: date, order: DESC}
+    ) {
       nodes {
         id
         slug
@@ -130,6 +133,7 @@ export const pageQuery = graphql`
         bodyTextNode {
           childMarkdownRemark {
             excerpt
+            timeToRead
           }
         }
       }

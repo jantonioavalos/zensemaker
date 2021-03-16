@@ -1,5 +1,4 @@
 /* CSS Custom Properties Definitions */
-
 :root {
   --maxWidth-none: "none";
   --maxWidth-xs: 20rem;
@@ -7,7 +6,7 @@
   --maxWidth-md: 28rem;
   --maxWidth-lg: 32rem;
   --maxWidth-xl: 36rem;
-  --maxWidth-2xl: 42rem;
+  --maxWidth-2xl: 42.5rem;
   --maxWidth-3xl: 48rem;
   --maxWidth-4xl: 56rem;
   --maxWidth-full: "100%";
@@ -55,6 +54,7 @@
   --fontSize-6: 2.488rem;
   --fontSize-7: 2.986rem;
   --color-primary: #4576c5;
+  --color-primary-dark: #2e4f83;
   --color-text: #2e353f;
   --color-text-light: #4f5969;
   --color-heading: #1a202c;
@@ -155,6 +155,14 @@ h5 > a,
 h6 > a {
   text-decoration: none;
   color: inherit;
+}
+
+/* Headers anchors */
+.anchor {
+  fill: var(--color-primary);
+}
+.anchor:hover {
+  fill: var(--color-primary-dark);
 }
 
 /* Prose */
@@ -288,6 +296,9 @@ a:focus {
 
 .bio {
   display: flex;
+}
+
+.bio-header {
   margin-bottom: var(--spacing-16);
 }
 
@@ -321,7 +332,7 @@ a:focus {
 
 /* Media queries */
 
-@media (max-width: 42rem) {
+@media (max-width: 42.5rem) {
   blockquote {
     padding: var(--spacing-0) var(--spacing-0) var(--spacing-0) var(--spacing-4);
     margin-left: var(--spacing-0);
@@ -330,4 +341,10 @@ a:focus {
   ol {
     list-style-position: inside;
   }
+}
+
+/* Helper classes */
+
+.blog-post-bio {
+  margin-bottom: 0;
 }

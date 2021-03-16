@@ -1,14 +1,14 @@
 module.exports = {
   siteMetadata: {
-    title: `Zensemaker Blog`,
+    title: `The Zensemaker's Blog`,
     author: {
-      name: `J. Antonio Avalos.`,
-      summary: `UX Architect writing about productivity, strategy and communication skills for creatives`,
+      name: `J. Antonio Avalos`,
+      summary: `UX Architect writing about productivity, strategy and communication skills for creatives.`,
     },
     description: `Short-form stories about productivity, strategy and communication skills. New posts every other day.`,
-    siteUrl: `https://zensemaker.gatsbyjs.io/`,
+    siteUrl: `https://blog.jantonioavalos.com/`,
     social: {
-      twitter: `jantonioavalos`,
+      handle: `jantonioavalos`,
     },
   },
   plugins: [
@@ -43,11 +43,24 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
+          `gatsby-remark-autolink-headers`,
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
         ],
       },
+    },
+    {
+      resolve: "gatsby-plugin-page-progress",
+      options: {
+        includePaths: [],
+        excludePaths: ["/"],
+        height: 4,
+        prependToBody: false,
+        color: `#4576c5`,
+        footerHeight: 0,
+        headerHeight: 0,
+      }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -114,7 +127,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Zensemaker Blog`,
+        name: `The Zensemaker's Blog`,
         short_name: `Zensemaker`,
         start_url: `/`,
         background_color: `#F4F9FF`,
@@ -124,6 +137,12 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-react-helmet-canonical-urls`,
+      options: {
+        siteUrl: `https://blog.jantonioavalos.com`,
+      },
+    },
     `gatsby-plugin-gatsby-cloud`,
     // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-offline`,

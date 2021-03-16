@@ -25,9 +25,9 @@ const Layout = ({ location, title, children }) => {
       <header className="global-header">{header}</header>
       <main>{children}</main>
       <footer>
-        © {new Date().getFullYear()}, Built with
+        Zensemaker © {new Date().getFullYear()}. All rights reserved. Built by
         {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
+        <a href="https://jantonioavalos.com">@jantonioavalos</a>
       </footer>
     </div>
   )
