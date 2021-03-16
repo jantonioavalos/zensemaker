@@ -144,7 +144,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-gatsby-cloud`,
-    // To learn more, visit: https://gatsby.dev/offline
+    'gatsby-plugin-dark-mode',
     `gatsby-plugin-offline`,
     {
     resolve: `gatsby-source-datocms`,
