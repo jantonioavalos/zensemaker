@@ -23,7 +23,7 @@ const BlogPostTemplate = ({ data, location }) => {
       >
         <header>
           <h1 itemProp="headline" >{post.frontmatter.title}</h1>
-          <p >{post.frontmatter.date}</p>
+          <p >{post.frontmatter.date + ` • ` + post.timeToRead + ` min read`}</p>
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
@@ -33,6 +33,7 @@ const BlogPostTemplate = ({ data, location }) => {
         <footer>
           <Bio />
         </footer>
+        <hr />
       </article>
       <nav className="blog-post-nav">
         <ul
@@ -47,14 +48,14 @@ const BlogPostTemplate = ({ data, location }) => {
           <li>
             {previous && (
               <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
+                ← {previous.frontmatter.title.substring(0, 60) + "... "}
               </Link>
             )}
           </li>
           <li>
             {next && (
               <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
+                {next.frontmatter.title.substring(0, 60) + "... "} →
               </Link>
             )}
           </li>
@@ -80,6 +81,7 @@ export const pageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       id
       excerpt(pruneLength: 160)
+      timeToRead
       html
       frontmatter {
         title

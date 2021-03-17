@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `The Zensemaker's Blog`,
+    title: `Zensemaker`,
     author: {
       name: `J. Antonio Avalos`,
-      summary: `UX Architect writing about productivity, strategy and communication skills for creatives.`,
+      summary: `Productivity, strategy and communication skills for creatives.`,
     },
     description: `Short-form stories about productivity, strategy and communication skills. New posts every other day.`,
     siteUrl: `https://blog.jantonioavalos.com/`,
@@ -127,7 +127,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `The Zensemaker's Blog`,
+        name: `Zensemaker`,
         short_name: `Zensemaker`,
         start_url: `/`,
         background_color: `#F4F9FF`,
@@ -144,7 +144,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-gatsby-cloud`,
-    // To learn more, visit: https://gatsby.dev/offline
+    'gatsby-plugin-dark-mode',
     `gatsby-plugin-offline`,
     {
     resolve: `gatsby-source-datocms`,
