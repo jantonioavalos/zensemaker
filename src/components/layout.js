@@ -9,12 +9,9 @@ const Layout = ({ location, title, children }) => {
 
   if (isRootPath) {
     header = (
-      <>
         <h1 className="main-heading">
           <Link to="/">{title}</Link>
-        </h1>
-        <ThemesToggler/>
-      </>
+        </h1>        
     )
   } else {
     header = (
@@ -26,7 +23,10 @@ const Layout = ({ location, title, children }) => {
 
   return (
     <div className="global-wrapper" data-is-root-path={isRootPath}>
-      <header className="global-header">{header}</header>
+      <header className="global-header">
+        {header}
+        <ThemesToggler/>
+      </header>
       <main>{children}</main>
       <footer>
         Zensemaker © {new Date().getFullYear()}. All rights reserved. Built by

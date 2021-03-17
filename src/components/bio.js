@@ -8,6 +8,8 @@
 import * as React from "react"
 import { useStaticQuery, Link, graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
+import { FaTwitterSquare, FaMedium, FaLinkedin, FaGithub } from 'react-icons/fa'
+import { IconContext } from "react-icons";
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
@@ -43,25 +45,22 @@ const Bio = () => {
         alt="Profile picture"
       />
       {author?.name && (
-        <p>
-          Written by <Link to={`/about`} itemProp="url">{author.name + `. `}</Link>{author?.summary || null}
-          {` Follow him on `} 
-          <a href={`https://twitter.com/${social?.handle || ``}`} target="_blank" rel="noreferrer">
-            Twitter
-          </a>
-          {`, `} 
-          <a href={`https://${social?.handle + `.` || ``}medium.com/`} target="_blank" rel="noreferrer">
-            Medium
-          </a>
-          {`, `} 
-          <a href={`https://linkedin.com/in/${social?.handle || ``}`} target="_blank" rel="noreferrer">
-            LinkedIn
-          </a>
-          {`, or  `} 
-          <a href={`https://github.com/${social?.handle || ``}`} target="_blank" rel="noreferrer">
-            Github 
-          </a>
-        </p>
+          <p>
+            Written by <Link to={`/about`} itemProp="url">{author.name}<br/></Link>{author.summary}                    
+            <br />
+            <a href={`https://twitter.com/${social?.handle || ``}`} target="_blank" rel="noreferrer">
+              <IconContext.Provider value={{ className: 'react-icons-bio' }}><FaTwitterSquare /></IconContext.Provider>
+            </a>
+            <a href={`https://${social?.handle + `.` || ``}medium.com/`} target="_blank" rel="noreferrer">
+              <IconContext.Provider value={{ className: 'react-icons-bio' }}><FaMedium /></IconContext.Provider>
+            </a>
+            <a href={`https://linkedin.com/in/${social?.handle || ``}`} target="_blank" rel="noreferrer">
+              <IconContext.Provider value={{ className: 'react-icons-bio' }}><FaLinkedin /></IconContext.Provider>
+            </a>
+            <a href={`https://github.com/${social?.handle || ``}`} target="_blank" rel="noreferrer">
+              <IconContext.Provider value={{ className: 'react-icons-bio' }}><FaGithub /></IconContext.Provider>
+            </a>
+          </p>
       )}
     </div>
   )
