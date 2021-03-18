@@ -46,7 +46,7 @@ const Bio = () => {
       />
       {author?.name && (
           <p>
-            Written by <Link to={`/about`} itemProp="url">{author.name}<br/></Link>{author.summary}                    
+            A blog written by <Link to={`/about`} itemProp="url">{author.name}<br/></Link>{author.summary}                    
             <br />
             <a href={`https://twitter.com/${social?.handle || ``}`} target="_blank" rel="noreferrer">
               <IconContext.Provider value={{ className: 'react-icons-bio' }}><FaTwitterSquare /></IconContext.Provider>
