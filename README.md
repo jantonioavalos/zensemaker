@@ -1,6 +1,6 @@
-# Zensemaker
+# [Zensemaker](https://blog.jantonioavalos.com)
 
-My personal blog. 
+A blog written by [@jantonioavalos](https://jantonioavalos.com).
 
-> To run locally, npm install, then gatsby develop, then open https://localhost:8000.
 
+> To run locally, `npm install`, then `gatsby develop`, later open `localhost:8000`.
