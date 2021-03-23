@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "zensemaker",
   "private": true,
   "description": "A starter for a blog powered by Gatsby and Markdown",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "version": "1.0.0",
+  "author": "J. Antonio Avalos <hey@jantonioavalos.com>",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/jantonioavalos/zensemaker/issues"
   },
   "dependencies": {
     "gatsby": "^3.0.1",
@@ -42,19 +42,22 @@
   "devDependencies": {
     "prettier": "2.2.1"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://github.com/jantonioavalos/zensemaker",
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "blog",
+    "datocms",
+    "jantonioavalos"
   ],
   "license": "0BSD",
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/jantonioavalos/zensemaker.git"
   },
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "develop": "gatsby develop -p 8888",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
