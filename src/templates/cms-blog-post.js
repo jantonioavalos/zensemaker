@@ -93,7 +93,7 @@ export const pageQuery = graphql`
       title
       cover {
         alt
-        gatsbyImageData(placeholder: BLURRED, width: 632)
+        gatsbyImageData(placeholder: BLURRED, width: 632, forceBlurhash: false,)
       }
       date(formatString: "MMMM DD, YYYY")
       bodyTextNode {
