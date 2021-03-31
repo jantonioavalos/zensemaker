@@ -3,14 +3,14 @@
 :root {
   /* Container */
   --maxWidth-none: "none";
-  --maxWidth-xs: 20rem;   /*320px*/
-  --maxWidth-sm: 24rem;   /*384px*/
-  --maxWidth-md: 28rem;   /*448px*/
-  --maxWidth-lg: 32rem;   /*512px*/
-  --maxWidth-xl: 36rem;   /*576px*/
-  --maxWidth-2xl: 42rem;  /*672px*/
-  --maxWidth-3xl: 48rem;  /*768px*/
-  --maxWidth-4xl: 56rem;  /*896px*/
+  --maxWidth-xs: 20rem; /*320px*/
+  --maxWidth-sm: 24rem; /*384px*/
+  --maxWidth-md: 28rem; /*448px*/
+  --maxWidth-lg: 32rem; /*512px*/
+  --maxWidth-xl: 36rem; /*576px*/
+  --maxWidth-2xl: 42rem; /*672px*/
+  --maxWidth-3xl: 48rem; /*768px*/
+  --maxWidth-4xl: 56rem; /*896px*/
   --maxWidth-full: "100%";
   --maxWidth-wrapper: var(--maxWidth-2xl); /*1344px*/
 
@@ -18,18 +18,18 @@
   --spacing-px: "1px";
   --spacing-0: 0;
   --spacing-1: 0.25rem; /*4px*/
-  --spacing-2: 0.5rem;  /*8px*/
+  --spacing-2: 0.5rem; /*8px*/
   --spacing-3: 0.75rem; /*12px*/
-  --spacing-4: 1rem;    /*16px*/
+  --spacing-4: 1rem; /*16px*/
   --spacing-5: 1.25rem; /*20px*/
-  --spacing-6: 1.5rem;  /*24px*/
-  --spacing-8: 2rem;    /*32px*/
+  --spacing-6: 1.5rem; /*24px*/
+  --spacing-8: 2rem; /*32px*/
   --spacing-10: 2.5rem; /*40px*/
-  --spacing-12: 3rem;   /*48px*/
-  --spacing-16: 4rem;   /*64px*/
-  --spacing-20: 5rem;   /*80px*/
-  --spacing-24: 6rem;   /*96px*/
-  --spacing-32: 8rem;   /*128px*/
+  --spacing-12: 3rem; /*48px*/
+  --spacing-16: 4rem; /*64px*/
+  --spacing-20: 5rem; /*80px*/
+  --spacing-24: 6rem; /*96px*/
+  --spacing-32: 8rem; /*128px*/
 
   /* Typography */
   --fontFamily-sans: Montserrat, system-ui, -apple-system, BlinkMacSystemFont,
@@ -53,9 +53,9 @@
 
   /* 1.200 Minor Third Type Scale */
   --fontSize-0: 0.833rem; /*13.328px*/
-  --fontSize-1: 1rem;     /*16px*/
-  --fontSize-2: 1.2rem;   /*19.2px*/
-  --fontSize-3: 1.44rem;  /*23.04px*/
+  --fontSize-1: 1rem; /*16px*/
+  --fontSize-2: 1.2rem; /*19.2px*/
+  --fontSize-3: 1.44rem; /*23.04px*/
   --fontSize-4: 1.728rem; /*27.648px*/
   --fontSize-5: 2.074rem; /*33.184px*/
   --fontSize-6: 2.488rem; /*39.808px*/
@@ -66,8 +66,8 @@
   --light-theme-text: #2e353f;
 
   /* Dark Theme Colors (DTC) */
-  --dark-theme-background: #0E1827;
-  --dark-theme-text: #F3F6FB;
+  --dark-theme-background: #0e1827;
+  --dark-theme-text: #f3f6fb;
 
   /* Typography Color */
   --color-text: var(--txt);
@@ -111,6 +111,13 @@ hr {
   background: var(--color-accent);
   height: 1px;
   border: 0;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
 }
 
 /* Heading */
@@ -280,9 +287,9 @@ a:focus {
 
 .global-header {
   margin-bottom: var(--spacing-12);
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .main-heading {
@@ -368,6 +375,9 @@ a:focus {
   ol {
     list-style-position: inside;
   }
+  img {
+    max-width: 100%;
+  }
 }
 
 /* Helper classes */
@@ -382,7 +392,7 @@ a:focus {
   font-size: var(--fontSize-3);
 }
 
-/* Light & Dark – ThemesToogler */ 
+/* Light & Dark – ThemesToogler */
 
 /* .custom-classname.react-toggle--checked .react-toggle-track {
   background-color: #D9436D;
@@ -398,13 +408,13 @@ body {
 body a {
   --a: var(--color-primary);
   color: var(--a);
-} 
+}
 
 body.dark {
   --bg: var(--dark-theme-background);
   --txt: var(--dark-theme-text);
 }
 
-body.dark a{
+body.dark a {
   --a: var(--color-primary);
 }
