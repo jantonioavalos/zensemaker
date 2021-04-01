@@ -8,7 +8,7 @@
   --maxWidth-md: 28rem; /*448px*/
   --maxWidth-lg: 32rem; /*512px*/
   --maxWidth-xl: 36rem; /*576px*/
-  --maxWidth-2xl: 42rem; /*672px*/
+  --maxWidth-2xl: 42.5rem; /*680px*/
   --maxWidth-3xl: 48rem; /*768px*/
   --maxWidth-4xl: 56rem; /*896px*/
   --maxWidth-full: "100%";
@@ -32,11 +32,12 @@
   --spacing-32: 8rem; /*128px*/
 
   /* Typography */
-  --fontFamily-sans: "Red Hat Display", Montserrat, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --fontFamily-serif: "Source Serif Pro", "Merriweather", "Georgia", Cambria, "Times New Roman",
-    Times, serif;
+  --fontFamily-sans: "Red Hat Display", Montserrat, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+  --fontFamily-serif: "Source Serif Pro", "Merriweather", "Georgia", Cambria,
+    "Times New Roman", Times, serif;
   --font-body: var(--fontFamily-serif);
   --font-heading: var(--fontFamily-sans);
   --fontWeight-normal: 400;
@@ -45,7 +46,7 @@
   --fontWeight-bold: 700;
   --fontWeight-extrabold: 800;
   --fontWeight-black: 900;
-  --fontSize-root: 16px;
+  --fontSize-root: 1rem; /*16px*/
   --lineHeight-none: 1;
   --lineHeight-tight: 1.1;
   --lineHeight-normal: 1.5;
@@ -54,7 +55,7 @@
   /* 1.200 Minor Third Type Scale */
   --fontSize-0: 0.833rem; /*13.328px*/
   --fontSize-1: 1rem; /*16px*/
-  --fontSize-2: 1.2rem; /*19.2px*/
+  --fontSize-2: 1.25rem; /*20px*/
   --fontSize-3: 1.44rem; /*23.04px*/
   --fontSize-4: 1.728rem; /*27.648px*/
   --fontSize-5: 2.074rem; /*33.184px*/
@@ -99,7 +100,7 @@ html {
 
 body {
   font-family: var(--font-body);
-  font-size: var(--fontSize-1);
+  font-size: var(--fontSize-2);
   color: var(--color-text);
 }
 
@@ -167,7 +168,7 @@ h5 {
 }
 
 h6 {
-  font-size: var(--fontSize-1);
+  font-size: var(--fontSize-2);
 }
 
 h1 > a {
@@ -210,6 +211,7 @@ ol {
   margin-bottom: var(--spacing-8);
   list-style-image: none;
   list-style-position: inside;
+  line-height: var(--lineHeight-relaxed);
 }
 
 ul li,
@@ -240,6 +242,7 @@ blockquote {
   font-size: var(--fontSize-2);
   font-style: italic;
   margin-bottom: var(--spacing-8);
+  line-height: var(--lineHeight-relaxed);
 }
 
 blockquote > :last-child {
