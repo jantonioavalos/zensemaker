@@ -1,5 +1,7 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -8,6 +10,7 @@ import SEO from "../components/seo"
 const CmsBlogPostTemplate = ({ data, location }) => {
   const story = data.datoCmsStoryPage
   const siteTitle = data.site.siteMetadata?.title || `Title`
+  const image = getImage(story.cover)
   const { previous, next } = data
 
   return (
@@ -24,7 +27,12 @@ const CmsBlogPostTemplate = ({ data, location }) => {
         <header>
           <h1 itemProp="headline">{story.title}</h1>
           <p>{story.date + ` • ` + story.bodyTextNode.childMarkdownRemark.timeToRead + ` min read`}</p>
-        </header>
+          {/* Does it have cover */ image ? 
+            <GatsbyImage image={image} alt={story.cover.alt} /> : null
+          }          
+        </header>        
+        {/* TODO: Use proper CSS in cover images */}
+        { image ? <br /> : null }
         <section
           dangerouslySetInnerHTML={{ __html: story.bodyTextNode.childMarkdownRemark.html }}
           itemProp="articleBody"
@@ -83,6 +91,10 @@ export const pageQuery = graphql`
       id
       slug
       title
+      cover {
+        alt
+        gatsbyImageData(placeholder: BLURRED, width: 632, forceBlurhash: false,)
+      }
       date(formatString: "MMMM DD, YYYY")
       bodyTextNode {
         childMarkdownRemark {
