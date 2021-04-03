@@ -29,12 +29,12 @@ const BlogIndex = ({ data, location }) => {
       <SEO title="All posts" />
       <Bio />
       {/* Stories from CMS */}
-      <ol style={{ listStyle: `none` }}>
+      <ol style={{ listStyle: `none` }} className="post-list">
         {stories.map(story => {
           const title = story.title || story.slug
 
           return (
-            <li key={story.slug}>
+            <li key={story.slug} className="post-list">
               <article
                 className="post-list-item"
                 itemScope
@@ -62,12 +62,12 @@ const BlogIndex = ({ data, location }) => {
         })}
       </ol>
       {/* Posts from static source – Repository */}
-      <ol style={{ listStyle: `none` }}>
+      <ol style={{ listStyle: `none` }} className="post-list">
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
 
           return (
-            <li key={post.fields.slug}>
+            <li key={post.fields.slug} className="post-list">
               <article
                 className="post-list-item"
                 itemScope
