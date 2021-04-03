@@ -46,6 +46,7 @@ const CmsBlogPostTemplate = ({ data, location }) => {
       <nav className="blog-post-nav">
         <h4>Continue reading</h4>
         <ul
+          className="post-list"
           style={{
             display: `flex`,
             flexWrap: `wrap`,
@@ -54,14 +55,14 @@ const CmsBlogPostTemplate = ({ data, location }) => {
             padding: 0,
           }}
         >
-          <li>
+          <li className="post-list">
             {previous && (
               <Link to={"/" + previous.slug} rel="prev">
                 ← {previous.title}
               </Link>
             )}
           </li>
-          <li>
+          <li className="post-list">
             {next && (
               <Link to={"/" + next.slug} rel="next">
                 {next.title} →
