@@ -37,6 +37,7 @@ const BlogPostTemplate = ({ data, location }) => {
       </article>
       <nav className="blog-post-nav">
         <ul
+          className="post-list"
           style={{
             display: `flex`,
             flexWrap: `wrap`,
@@ -45,14 +46,14 @@ const BlogPostTemplate = ({ data, location }) => {
             padding: 0,
           }}
         >
-          <li>
+          <li className="post-list">
             {previous && (
               <Link to={previous.fields.slug} rel="prev">
                 ← {previous.frontmatter.title.substring(0, 60) + "... "}
               </Link>
             )}
           </li>
-          <li>
+          <li className="post-list">
             {next && (
               <Link to={next.fields.slug} rel="next">
                 {next.frontmatter.title.substring(0, 60) + "... "} →
