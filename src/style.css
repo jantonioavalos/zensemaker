@@ -393,6 +393,7 @@ a:focus {
   color: white;
   margin-top: -3px;
   margin-left: -2px;
+  font-size: var(--fontSize-1);
 }
 .react-icons-bio {
   margin-top: var(--spacing-2);
@@ -401,10 +402,24 @@ a:focus {
 }
 
 /* Light & Dark – ThemesToogler */
+/* github.com/aaronshaf/react-toggle/blob/HEAD/style.css */
 
-/* .custom-classname.react-toggle--checked .react-toggle-track {
-  background-color: #D9436D;
-} */
+.custom-classname.react-toggle--checked .react-toggle-track {
+  background-color: #912d49;
+}
+.custom-classname.react-toggle:hover:not(.react-toggle--disabled)
+  .react-toggle-track {
+  background-color: #d9436d;
+}
+.custom-classname .react-toggle-track {
+  background-color: var(--color-primary);
+}
+.custom-classname.react-toggle:hover:not(.react-toggle--checked)
+  .react-toggle-track {
+  background-color: var(--color-primary-dark);
+}
+
+/* Dark mode colors logic */
 
 body {
   --bg: var(--light-theme-background);

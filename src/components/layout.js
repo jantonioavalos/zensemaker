@@ -29,9 +29,11 @@ const Layout = ({ location, title, children }) => {
       </header>
       <main>{children}</main>
       <footer>
-        Zensemaker © {new Date().getFullYear()}. All rights reserved. Built by
-        {` `}
-        <a href="https://jantonioavalos.com">@jantonioavalos</a>
+        <small>
+          Zensemaker © {new Date().getFullYear()}. All rights reserved. Built by
+          {` `}
+          <a href="https://jantonioavalos.com">@jantonioavalos</a>
+        </small>
       </footer>
     </div>
   )
