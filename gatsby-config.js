@@ -63,11 +63,19 @@ module.exports = {
       }
     },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    `gatsby-plugin-sharp`,    
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingId: `G-MYG8PB533X`,
+        // You can add multiple tracking ids and a pageview event will be fired for all of them.
+        trackingIds: [
+          "G-MYG8PB533X", // Google Analytics / GA
+          ],
+        // This object is used for configuration specific to this plugin
+        pluginConfig: {          
+          // Setting this parameter is also optional
+          respectDNT: true,
+        },
       },
     },
     {
